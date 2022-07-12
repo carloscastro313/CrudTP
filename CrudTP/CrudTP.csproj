@@ -56,6 +56,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Componentes\FormProducto.xaml.cs">
+      <DependentUpon>FormProducto.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CrudTPDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -67,7 +70,17 @@
     <Compile Include="Vistas\CrearCategoria.xaml.cs">
       <DependentUpon>CrearCategoria.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\CrearProducto.xaml.cs">
+      <DependentUpon>CrearProducto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\ModificarProducto.xaml.cs">
+      <DependentUpon>ModificarProducto.xaml</DependentUpon>
+    </Compile>
     <Page Include="Componentes\FormCategoria.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Componentes\FormProducto.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -87,6 +100,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Vistas\CrearCategoria.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vistas\CrearProducto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vistas\ModificarProducto.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

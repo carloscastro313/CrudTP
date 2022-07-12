@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CrudTP"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="CRUD TP - Productos" Height="450" Width="800"
+        ResizeMode="NoResize">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*" />
@@ -17,7 +18,17 @@
         </Grid.RowDefinitions>
 
         <Grid Margin="20">
-            <DataGrid x:Name="dgProducto" AutoGenerateColumns="True" IsReadOnly="True" ColumnWidth="*" />
+            <DataGrid x:Name="dgProducto" AutoGenerateColumns="False" IsReadOnly="True" ColumnWidth="*" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Id}" Header="Id" Width="40"/>
+                    <DataGridTextColumn Binding="{Binding Nombre}" Header="Nombre" Width="3*"/>
+                    <DataGridTextColumn Binding="{Binding Marca}" Header="Marca" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding Precio}" Header="Precio" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding Cantidad}" Header="Cantidad" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding NombreCategoria}" Header="Cantidad" Width="*"/>
+
+                </DataGrid.Columns>
+            </DataGrid>
         </Grid>
         <Grid Grid.Row="1" Margin="20,0">
             <Grid.ColumnDefinitions>
@@ -26,12 +37,13 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <ComboBox Name="cmbCategoria" VerticalAlignment="Center" SelectedIndex="0" Width="150" SelectionChanged="cmbCategoria_SelectionChanged" />
-            <Button x:Name="btnCrearCategoria" Content="Crear producto" Style="{StaticResource Button}" Grid.Column="2" Click="btnCrearCategoria_Click"/>
+            <Button x:Name="btnActualizar" Content="Actualizar" Style="{StaticResource Button}" Grid.Column="1" Click="btnActualizar_Click" />
+            <Button x:Name="btnCrearCategoria" Content="Crear categoria" Style="{StaticResource Button}" Grid.Column="2" Click="btnCrearCategoria_Click"/>
         </Grid>
         <StackPanel Grid.Column="1" Margin="20">
-            <Button x:Name="btnCrearProducto" Content="Crear producto" Style="{StaticResource Button}" />
-            <Button x:Name="btnModificarProducto" Content="Crear producto" Style="{StaticResource Button}" />
-            <Button x:Name="btnEliminarProducto" Content="Crear producto" Style="{StaticResource Button}" />
+            <Button x:Name="btnCrearProducto" Content="Crear producto" Style="{StaticResource Button}" Click="btnCrearProducto_Click"/>
+            <Button x:Name="btnModificarProducto" Content="Modificar producto" Style="{StaticResource Button}" Click="btnModificarProducto_Click" />
+            <Button x:Name="btnEliminarProducto" Content="Eliminar producto" Style="{StaticResource Button}" Click="btnEliminarProducto_Click" />
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="20">
             <Button x:Name="Salir" Content="Salir" Style="{StaticResource Button}"  Click="Salir_Click"/>

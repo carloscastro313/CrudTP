@@ -28,8 +28,14 @@ namespace CrudTP.Vistas
                 return;
             }
 
-            if (_datosCategoria.CrearCategoria(_categoria)) MessageBox.Show("Se a creado la categoria con exito");
-            else MessageBox.Show("No se pudo crear la categoria");
+            try
+            {
+                _datosCategoria.CrearCategoria(_categoria);
+            }
+            catch (System.Exception)
+            {
+                MessageBox.Show("ERROR - No se a podido conectar a la base de datos - Creacion no efectuada");
+            }
 
             Close();
         }

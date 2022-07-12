@@ -1,18 +1,18 @@
-﻿<Window x:Class="CrudTP.Vistas.CrearCategoria"
+﻿<Window x:Class="CrudTP.Vistas.ModificarProducto"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CrudTP.Vistas" xmlns:Componentes="clr-namespace:CrudTP.Componentes"
         mc:Ignorable="d"
-        Title="Crear categoria" Height="160" Width="320"
+        Title="Modificar producto" Height="300" Width="300"
         ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="3*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Componentes:FormCategoria x:Name="frmCategoria" />
-        <Button x:Name="btnSubmit" Grid.Row="1" Style="{StaticResource Button}" Content="Crear" Click="btnSubmit_Click" />
+        <Componentes:FormProducto x:Name="frmProducto"/>
+        <Button Name="btnSubmit" Style="{StaticResource Button}" Grid.Row="1" Click="btnSubmit_Click" Content="Modificar"/>
     </Grid>
 </Window>
