@@ -33,23 +33,26 @@ namespace CrudTP.Datos
             return ExecuteCommand(new SqlCommand(query, sqlConnection));
         }
 
-        protected DataTable ExecuteDataAdapter(SqlCommand command)
+        protected DataTable ExecuteDataReader(SqlCommand command)
         {
             DataTable dt = new DataTable();
 
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(command);
+            sqlConnection.Open();
 
-            using (sqlDataAdapter)
+            using (SqlDataReader reader = command.ExecuteReader())
             {
-                sqlDataAdapter.Fill(dt);
+                dt.Load(reader);
             }
+
+            sqlConnection.Close();
 
             return dt;
         }
 
-        protected DataTable ExecuteDataAdapter(string query)
+        protected DataTable ExecuteDataReader(string query)
         {
-            return ExecuteDataAdapter(new SqlCommand(query, sqlConnection));
+            return ExecuteDataReader(new SqlCommand(query, sqlConnection));
         }
+
     }
 }

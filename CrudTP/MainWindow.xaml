@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:CrudTP"
         mc:Ignorable="d"
         Title="CRUD TP - Productos" Height="450" Width="800"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize"
+        Background="{StaticResource bgWindow}"
+        >
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*" />

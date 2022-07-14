@@ -10,22 +10,21 @@ namespace CrudTP.Datos
     {
         public List<Producto> GetProductos(int idCategoria = -1)
         {
-            string query = "SELECT *, c.nombre as nombreCategoria FROM PRODUCTO p INNER JOIN CATEGORIA c ON p.categoria = c.Id";
+            SqlCommand sqlCommand;
 
             if (idCategoria != -1)
             {
-                query += " WHERE categoria = @IdCategoria";
-            }
-
-            SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
-
-
-            if (idCategoria != -1)
-            {
+                sqlCommand = new SqlCommand("spGetProductosPorCategoria", sqlConnection);
                 sqlCommand.Parameters.AddWithValue("@IdCategoria", idCategoria);
             }
+            else
+            {
+                sqlCommand = new SqlCommand("spGetProductos", sqlConnection);
+            }
 
-            DataTable dataTable = ExecuteDataAdapter(sqlCommand);
+            sqlCommand.CommandType = CommandType.StoredProcedure;
+
+            DataTable dataTable = ExecuteDataReader(sqlCommand);
 
             return dataTable.AsEnumerable().Select(row => new Producto
             {
@@ -42,9 +41,7 @@ namespace CrudTP.Datos
 
         public bool CrearProducto(Producto producto)
         {
-            string query = "INSERT INTO PRODUCTO (nombre,marca,precio,cantidad,categoria) VALUES (@nombre,@marca,@precio,@cantidad,@categoria)";
-
-            SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
+            SqlCommand sqlCommand = new SqlCommand("spCreateProducto", sqlConnection);
 
             sqlCommand.Parameters.AddWithValue("@nombre", producto.Nombre);
             sqlCommand.Parameters.AddWithValue("@marca", producto.Marca);
@@ -52,25 +49,25 @@ namespace CrudTP.Datos
             sqlCommand.Parameters.AddWithValue("@cantidad", producto.Cantidad);
             sqlCommand.Parameters.AddWithValue("@categoria", producto.Categoria);
 
+            sqlCommand.CommandType = CommandType.StoredProcedure;
+
             return ExecuteCommand(sqlCommand);
         }
 
         public bool EliminarProducto(int id)
         {
-            string query = "DELETE FROM PRODUCTO WHERE Id = @id";
-
-            SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
+            SqlCommand sqlCommand = new SqlCommand("spDeleteProducto", sqlConnection);
 
             sqlCommand.Parameters.AddWithValue("@id", id);
+
+            sqlCommand.CommandType = CommandType.StoredProcedure;
 
             return ExecuteCommand(sqlCommand);
         }
 
         public bool ModificarProducto(Producto producto)
         {
-            string query = "UPDATE PRODUCTO SET nombre = @nombre, marca = @marca, precio = @precio, cantidad = @cantidad, categoria = @categoria WHERE Id = @id";
-
-            SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
+            SqlCommand sqlCommand = new SqlCommand("spUpdateProducto", sqlConnection);
 
             sqlCommand.Parameters.AddWithValue("@id", producto.Id);
             sqlCommand.Parameters.AddWithValue("@nombre", producto.Nombre);
@@ -78,6 +75,8 @@ namespace CrudTP.Datos
             sqlCommand.Parameters.AddWithValue("@precio", producto.Precio);
             sqlCommand.Parameters.AddWithValue("@cantidad", producto.Cantidad);
             sqlCommand.Parameters.AddWithValue("@categoria", producto.Categoria);
+
+            sqlCommand.CommandType = CommandType.StoredProcedure;
 
             return ExecuteCommand(sqlCommand);
         }

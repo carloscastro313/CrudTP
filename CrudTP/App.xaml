@@ -9,5 +9,9 @@
             <Setter Property="Height" Value="25" />
             <Setter Property="Margin" Value="0,20" />
         </Style>
+        <LinearGradientBrush x:Key="bgWindow" >
+            <GradientStop Offset="0" Color="Silver"/>
+            <GradientStop Offset="1" Color="Gray"/>
+        </LinearGradientBrush>
     </Application.Resources>
 </Application>

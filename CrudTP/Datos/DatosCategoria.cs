@@ -11,7 +11,10 @@ namespace CrudTP.Datos
 
         public List<Categoria> GetCategorias()
         {
-            DataTable categoriasTable = ExecuteDataAdapter("SELECT * FROM CATEGORIA");
+            SqlCommand cmd = new SqlCommand("spGetCategoria", sqlConnection);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            DataTable categoriasTable = ExecuteDataReader(cmd);
 
             return categoriasTable.AsEnumerable().Select(row => new Categoria
             {
@@ -22,13 +25,11 @@ namespace CrudTP.Datos
 
         public bool CrearCategoria(Categoria categoria)
         {
-            string query = "INSERT INTO CATEGORIA (nombre) VALUES (@nombre)";
+            SqlCommand cmd = new SqlCommand("spCreateCategoria", sqlConnection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@nombre", categoria.Nombre);
 
-            SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
-
-            sqlCommand.Parameters.AddWithValue("@nombre", categoria.Nombre);
-
-            return ExecuteCommand(sqlCommand);
+            return ExecuteCommand(cmd);
         }
     }
 }
