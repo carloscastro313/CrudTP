@@ -20,7 +20,7 @@
         </Grid.RowDefinitions>
 
         <Grid Margin="20">
-            <DataGrid x:Name="dgProducto" AutoGenerateColumns="False" IsReadOnly="True" ColumnWidth="*" >
+            <DataGrid x:Name="dgProducto" AutoGenerateColumns="False" IsReadOnly="True" ColumnWidth="*"  SelectionChanged="dgProducto_SelectionChanged">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Id}" Header="Id" Width="40"/>
                     <DataGridTextColumn Binding="{Binding Nombre}" Header="Nombre" Width="3*"/>
@@ -28,7 +28,6 @@
                     <DataGridTextColumn Binding="{Binding Precio}" Header="Precio" Width="*"/>
                     <DataGridTextColumn Binding="{Binding Cantidad}" Header="Cantidad" Width="*"/>
                     <DataGridTextColumn Binding="{Binding NombreCategoria}" Header="Cantidad" Width="*"/>
-
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
@@ -39,16 +38,16 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <ComboBox Name="cmbCategoria" VerticalAlignment="Center" SelectedIndex="0" Width="150" SelectionChanged="cmbCategoria_SelectionChanged" />
-            <Button x:Name="btnActualizar" Content="Actualizar" Style="{StaticResource Button}" Grid.Column="1" Click="btnActualizar_Click" />
-            <Button x:Name="btnCrearCategoria" Content="Crear categoria" Style="{StaticResource Button}" Grid.Column="2" Click="btnCrearCategoria_Click"/>
+            <Button x:Name="btnActualizar" Content="Actualizar" Grid.Column="1" Click="btnActualizar_Click" />
+            <Button x:Name="btnCrearCategoria" Content="Crear categoria" Grid.Column="2" Click="btnCrearCategoria_Click" Style="{StaticResource Crear}"/>
         </Grid>
         <StackPanel Grid.Column="1" Margin="20">
-            <Button x:Name="btnCrearProducto" Content="Crear producto" Style="{StaticResource Button}" Click="btnCrearProducto_Click"/>
-            <Button x:Name="btnModificarProducto" Content="Modificar producto" Style="{StaticResource Button}" Click="btnModificarProducto_Click" />
-            <Button x:Name="btnEliminarProducto" Content="Eliminar producto" Style="{StaticResource Button}" Click="btnEliminarProducto_Click" />
+            <Button x:Name="btnCrearProducto" Content="Crear producto" Click="btnCrearProducto_Click" Style="{StaticResource Crear}"/>
+            <Button x:Name="btnModificarProducto" Content="Modificar producto"  Click="btnModificarProducto_Click" Style="{StaticResource Modificar}"/>
+            <Button x:Name="btnEliminarProducto" Content="Eliminar producto" Click="btnEliminarProducto_Click" Style="{StaticResource Eliminar}"/>
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="20">
-            <Button x:Name="Salir" Content="Salir" Style="{StaticResource Button}"  Click="Salir_Click"/>
+            <Button x:Name="Salir" Content="Salir" Click="Salir_Click"/>
         </StackPanel>
     </Grid>
 </Window>

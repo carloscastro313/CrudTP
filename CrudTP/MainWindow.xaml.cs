@@ -23,6 +23,8 @@ namespace CrudTP
                 datosCategoria = new DatosCategoria();
                 datosProducto = new DatosProducto();
                 ActualizarListaCategoria();
+                btnEliminarProducto.IsEnabled = false;
+                btnModificarProducto.IsEnabled = false;
             }
             catch (System.Exception)
             {
@@ -152,6 +154,20 @@ namespace CrudTP
         private void btnActualizar_Click(object sender, RoutedEventArgs e)
         {
             ActualizarListaProductos();
+        }
+
+        private void dgProducto_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            if (dgProducto.SelectedIndex == -1)
+            {
+                btnEliminarProducto.IsEnabled = false;
+                btnModificarProducto.IsEnabled = false;
+            }
+            else
+            {
+                btnEliminarProducto.IsEnabled = true;
+                btnModificarProducto.IsEnabled = true;
+            }
         }
     }
 }

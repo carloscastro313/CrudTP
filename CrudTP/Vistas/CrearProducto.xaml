@@ -6,13 +6,14 @@
         xmlns:local="clr-namespace:CrudTP.Vistas" xmlns:Componentes="clr-namespace:CrudTP.Componentes"
         mc:Ignorable="d"
         Title="Crear producto" Height="300" Width="300"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize"
+        Background="{StaticResource bgWindow}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Componentes:FormProducto x:Name="frmProducto"/>
-        <Button Name="btnSubmit" Style="{StaticResource Button}" Grid.Row="1" Click="btnSubmit_Click" Content="Crear"/>
+        <Button Name="btnSubmit" Grid.Row="1" Click="btnSubmit_Click" Content="Crear" Style="{StaticResource Crear}"/>
     </Grid>
 </Window>
