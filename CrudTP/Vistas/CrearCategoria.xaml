@@ -6,13 +6,14 @@
         xmlns:local="clr-namespace:CrudTP.Vistas" xmlns:Componentes="clr-namespace:CrudTP.Componentes"
         mc:Ignorable="d"
         Title="Crear categoria" Height="160" Width="320"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize"
+        Background="{StaticResource bgWindow}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Componentes:FormCategoria x:Name="frmCategoria" />
-        <Button x:Name="btnSubmit" Grid.Row="1" Style="{StaticResource Button}" Content="Crear" Click="btnSubmit_Click" />
+        <Button x:Name="btnSubmit" Grid.Row="1" Content="Crear" Click="btnSubmit_Click" Style="{StaticResource Crear}"/>
     </Grid>
 </Window>

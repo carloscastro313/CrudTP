@@ -4,10 +4,77 @@
              xmlns:local="clr-namespace:CrudTP"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <Style x:Key="Button" TargetType="Button">
+        <Style TargetType="{x:Type Button}">
             <Setter Property="Width" Value="150" />
             <Setter Property="Height" Value="25" />
             <Setter Property="Margin" Value="0,20" />
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10" />
+                </Style>
+            </Style.Resources>
         </Style>
+        <Style BasedOn="{StaticResource {x:Type Button}}" x:Key="Eliminar" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="Transparent" BorderThickness="1">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="LightSalmon"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="True">
+                    <Setter Property="Foreground" Value="White" />
+                    <Setter Property="Background" Value="red" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style BasedOn="{StaticResource {x:Type Button}}" x:Key="Crear" TargetType="{x:Type Button}">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background" Value="#FF662BEC" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="Transparent" BorderThickness="1">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FFA17FEF"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style BasedOn="{StaticResource {x:Type Button}}" x:Key="Modificar" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="Transparent" BorderThickness="1">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="True">
+                    <Setter Property="Foreground" Value="White" />
+                    <Setter Property="Background" Value="#FFECA72B" />
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FFECC276"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <LinearGradientBrush x:Key="bgWindow" >
+            <GradientStop Offset="0" Color="Silver"/>
+            <GradientStop Offset="1" Color="Gray"/>
+        </LinearGradientBrush>
     </Application.Resources>
 </Application>
